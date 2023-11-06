@@ -1,0 +1,14 @@
+<form #postForm ="ngForm" (ngSubmit)="save()"  method="post" enctype="multipart/form-data">
+    <h1 class="form-label"> Create a post!</h1>
+    <div class="mb-3">
+        <label  class="form-label" for="thefile">Choose a photo! (Paste a link)</label>
+      <input type="text" class="form-control" name="theImage" id="theImage" [(ngModel)]="url" >
+      <div class="mb-3">
+        <label  class="form-label" for="title">Think of a caption</label>
+        <input type="text" class="form-control" name="title"  id="title" [(ngModel)]="title" placeholder="Today was a beautiful day!">
+      </div>
+    </div>
+  
+    <input type="submit" name="submit" class="btn btn-primary" value="Post">
+  </form>
+  

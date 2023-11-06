@@ -1,0 +1,15 @@
+<div  class="details">
+    <div class="dropdown">
+        <button class="dropbtn"></button>
+        <div class="dropdown-content">
+          <a  (click)="showEdit()">Edit post</a>
+          <a (click)="delete()">Delete post</a>
+        </div>
+      </div>
+      <img [src]="post.url">
+    <div *ngIf="showPost">
+    <p class="lead"><span style="font-weight: bold;">{{post.albumId}}: </span>{{post.title}}</p>
+    <button class="btn btn-dark" (click)="goBack()">Back</button>
+    </div>
+    <edit-post (savePostEmitter)="save($event)" (cancelEmitter)="cancel()" *ngIf="!showPost" [post]="this.post"></edit-post>
+</div>

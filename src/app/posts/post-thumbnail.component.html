@@ -1,0 +1,12 @@
+<div class="card" [routerLink]="['/posts', post.id]" >
+    <div class="dropdown">
+        <button class="dropbtn"></button>
+        <div class="dropdown-content">
+         <a (click)="delete()">Delete post</a>
+        </div>
+      </div>
+    
+    <img  [src]="post.thumbnailUrl">
+    <p>{{post.albumId}} : {{post.title}}</p>
+
+</div>
