@@ -9,7 +9,7 @@ import { IPost } from "../shared/post.module";
 export class PostResolver implements Resolve<any>{
     constructor(private postService: PostService){}
 
-    resolve(route: ActivatedRouteSnapshot) :IPost{
+    resolve(route: ActivatedRouteSnapshot){
         return this.postService.getPost(route.params['id'])
     }
 }

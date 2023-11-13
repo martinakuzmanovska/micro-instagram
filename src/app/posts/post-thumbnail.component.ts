@@ -16,8 +16,12 @@ export class PostThumbnailComponent{
     {
         if(confirm('Are you sure you want to delete this post?'))
         {
-            this.postService.deletePost(this.post)
-            this.router.navigate(['/posts'])
+            this.postService.deletePost(this.post).subscribe(
+                (response) => console.log("deleting...."),
+                (error: any) => console.log(error),
+                () => console.log("Done deleting Post")
+            )
+            
         }
         
     }

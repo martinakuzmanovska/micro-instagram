@@ -35,8 +35,15 @@ export class AddPostComponent
         //    (data) => this.post =data,
        //     () =>
       //  this.router.navigate(['/posts']))
-      console.log(ID)
-      this.postService.savePost(this.post)
+
+      this.postService.savePost(this.post).subscribe((response) => {
+     
+          console.log(response);
+      },(error) => {
+        console.error('POST request failed:');
+        },
+        () => console.log("Done creating a post")
+    );
       this.router.navigate(['/posts'])
       
     }

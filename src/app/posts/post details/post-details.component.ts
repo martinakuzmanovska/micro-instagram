@@ -17,11 +17,13 @@ export class PostDetailsComponent implements OnInit
 
     constructor(private postService: PostService, private route: ActivatedRoute, private router: Router){}
     ngOnInit(): void {
-        const id = +this.route.snapshot.paramMap.get('id')!!
+        this.route.data.forEach((data)=> 
+        {
+            this.post = data['post'];
 
-        if(!isNaN(id))
-       this.post = this.postService.getPost(id)
-    }
+            })
+            
+        }
       
     
     showEdit()
@@ -30,7 +32,11 @@ export class PostDetailsComponent implements OnInit
     }
     save(post: IPost){
        
-        this.postService.updatePost(post)
+        this.postService.updatePost(post).subscribe(
+            (response) => console.log(response),
+            (error: any) => console.log(error),
+            () => console.log('Done updating Post')
+        )
         this.showPost = true
     }
     cancel()
@@ -41,7 +47,10 @@ export class PostDetailsComponent implements OnInit
     {
         if(confirm('Are you sure you want to delete this post?'))
         {
-            this.postService.deletePost(this.post)
+            this.postService.deletePost(this.post).subscribe(
+            (response) => console.log("deleting...."),
+            (error: any) => console.log(error),
+            () => console.log("Done deleting Post"))
             this.router.navigate(['/posts'])
         }
         

@@ -31,7 +31,6 @@ export class EditPostComponent{
 
     save(values : any){
         this.post.title = values.title
-        console.log(this.post.title)
         this.savePostEmitter.emit(this.post)
 
     }
